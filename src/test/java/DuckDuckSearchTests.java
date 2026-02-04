@@ -7,7 +7,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class DuckDuckSearchTests {
 
     @Test
-    void duckDuckQaGuruHardestSearchTest() {
+    void duckDuckQaGuruSimpleSearchTest() {
         open("https://duckduckgo.com/");
         $("#searchbox_input").setValue("QA Guru").pressEnter();
         $("#web_content_wrapper").shouldHave(text("qa.guru"));
