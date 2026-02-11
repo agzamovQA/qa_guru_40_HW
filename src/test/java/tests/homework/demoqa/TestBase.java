@@ -1,0 +1,18 @@
+package tests.homework.demoqa;
+
+import org.junit.jupiter.api.BeforeAll;
+import com.codeborne.selenide.Configuration;
+
+import static com.codeborne.selenide.Selenide.executeJavaScript;
+
+public class TestBase {
+    @BeforeAll
+    static void beforeAll() {
+        Configuration.browser = "chrome";
+        Configuration.browserVersion = "144.0";
+        Configuration.browserSize = "1920x1080";
+        Configuration.baseUrl = "https://demoqa.com";
+        Configuration.pageLoadStrategy = "eager";
+        Configuration.timeout = 10000;
+    }
+}
