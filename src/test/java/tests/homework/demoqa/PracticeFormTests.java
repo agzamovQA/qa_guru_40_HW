@@ -4,6 +4,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -24,7 +25,7 @@ public class PracticeFormTests extends TestBase {
     String userCity = "Noida";
 
     @Test
-    @DisplayName("[Positive][DemoQa] Проверка формы регистрации с заполнением всех полей и проверкой результата в итогвой таблице")
+    @DisplayName("[Positive] Fill all fields and check table result")
     void successfulFillRegistrationFormTest() {
         open("/automation-practice-form");
 
@@ -60,6 +61,67 @@ public class PracticeFormTests extends TestBase {
 
         $("#submit").click();
 
-        sleep(6000);
+        //Проверяем ответ в таблице
+        $(".modal-header").shouldHave(text("Thanks for submitting the form"));
+
+        //Проверяем соответствие ключ-значение
+        $(".table-responsive").$(byText("Student Name")).parent().shouldHave(text(firstName + " " + lastName));
+        $(".table-responsive").$(byText("Student Email")).parent().shouldHave(text(userEmail));
+        $(".table-responsive").$(byText("Gender")).parent().shouldHave(text(userGender));
+        $(".table-responsive").$(byText("Mobile")).parent().shouldHave(text(userNumber));
+        $(".table-responsive").$(byText("Date of Birth")).parent().shouldHave(text(dateOfBirth + " " + monthOfBirth + "," + yearOfBirth));
+        $(".table-responsive").$(byText("Subjects")).parent().shouldHave(text(userSubjectChoice));
+        $(".table-responsive").$(byText("Hobbies")).parent().shouldHave(text(userHobbies));
+        $(".table-responsive").$(byText("Picture")).parent().shouldHave(text("Jhonny_Silverhand.jpg"));
+        $(".table-responsive").$(byText("Address")).parent().shouldHave(text(userHomeAdress));
+        $(".table-responsive").$(byText("State and City")).parent().shouldHave(text(userState + " " + userCity));
+
+    }
+
+    @Test
+    @DisplayName("[Positive] Fill only required fields")
+    void fillOnlyRequiredForm () {
+
+        open("/automation-practice-form");
+
+        executeJavaScript("$('footer').remove();");
+        executeJavaScript("$('#fixedban').remove();");
+
+        $("#firstName").setValue(firstName);
+        $("#lastName").setValue(lastName);
+        $("#genterWrapper").$(byText(userGender)).click();
+        $("#userNumber").setValue(userNumber);
+
+        $("#submit").click();
+
+        //Проверяем ответ в таблице
+        $(".modal-header").shouldHave(text("Thanks for submitting the form"));
+
+        $(".table-responsive").$(byText("Student Name")).parent().shouldHave(text(firstName + " " + lastName));
+        $(".table-responsive").$(byText("Gender")).parent().shouldHave(text(userGender));
+        $(".table-responsive").$(byText("Mobile")).parent().shouldHave(text(userNumber));
+
+    }
+
+    @Test
+    @DisplayName("[Negative] Fill form with email without @")
+    void unvalidUserEmail () {
+
+        open("/automation-practice-form");
+
+        executeJavaScript("$('footer').remove();");
+        executeJavaScript("$('#fixedban').remove();");
+
+        $("#firstName").setValue(firstName);
+        $("#lastName").setValue(lastName);
+        $("#genterWrapper").$(byText(userGender)).click();
+        $("#userNumber").setValue(userNumber);
+        $("#userEmail").setValue("samurai2023nc.com");
+
+        $("#submit").click();
+
+        //Проверяем ответ в таблице
+        $(".modal-header").shouldNot(visible);
+
     }
 }
