@@ -14,10 +14,9 @@ public class PracticeFormTests extends TestBase {
     @Test
     @DisplayName("[Positive] Fill all fields and check table result")
     void successfulFillRegistrationFormTest() {
-        open("/automation-practice-form");
-        executeJavaScript("$('footer').remove();");
-        executeJavaScript("$('#fixedban').remove();");
-
+        open("");
+        $$(".card-body").findBy(text("Forms")).click();
+        $$(".router-link").findBy(text("Practice Form")).click();
 
         $("#firstName").setValue(TestData.firstName);
         $("#lastName").setValue(TestData.lastName);
@@ -69,10 +68,9 @@ public class PracticeFormTests extends TestBase {
     @DisplayName("[Positive] Fill only required fields")
     void fillOnlyRequiredForm () {
 
-        open("/automation-practice-form");
-
-        executeJavaScript("$('footer').remove();");
-        executeJavaScript("$('#fixedban').remove();");
+        open("");
+        $$(".card-body").findBy(text("Forms")).click();
+        $$(".router-link").findBy(text("Practice Form")).click();
 
         $("#firstName").setValue(TestData.firstName);
         $("#lastName").setValue(TestData.lastName);
@@ -94,10 +92,9 @@ public class PracticeFormTests extends TestBase {
     @DisplayName("[Negative] Fill form with email without @")
     void unvalidUserEmail () {
 
-        open("/automation-practice-form");
-
-        executeJavaScript("$('footer').remove();");
-        executeJavaScript("$('#fixedban').remove();");
+        open("");
+        $$(".card-body").findBy(text("Forms")).click();
+        $$(".router-link").findBy(text("Practice Form")).click();
 
         $("#firstName").setValue(TestData.firstName);
         $("#lastName").setValue(TestData.lastName);
