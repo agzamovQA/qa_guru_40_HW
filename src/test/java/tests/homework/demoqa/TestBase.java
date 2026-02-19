@@ -7,12 +7,12 @@ import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class TestBase {
     @BeforeAll
-    static void beforeAll() {
+    static void setupSelenideConfig() {
         Configuration.browser = "chrome";
         Configuration.browserVersion = "144.0";
         Configuration.browserSize = "2560x1440";
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
-        Configuration.timeout = 10000;
+        Configuration.timeout = 4000;
     }
 }

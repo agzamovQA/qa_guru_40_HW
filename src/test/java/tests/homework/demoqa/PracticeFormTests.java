@@ -38,7 +38,7 @@ public class PracticeFormTests extends TestBase {
 
         $("#hobbiesWrapper").$(byText(TestData.userHobbies)).click();
         $("#currentAddress").setValue(TestData.userHomeAdress);
-        $("#uploadPicture").uploadFromClasspath("Jhonny_Silverhand.jpg");
+        $("#uploadPicture").uploadFromClasspath(TestData.userPhoto);
 
         $("#state").click();
         $("#state").$(byText(TestData.userState)).click();

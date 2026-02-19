@@ -12,6 +12,7 @@ public class TestData {
             userSubjectChoice = "English",
             userHobbies = "Music",
             userHomeAdress = "Night City, District Kabuki, Home 20, apart 77",
+            userPhoto = "Jhonny_Silverhand.jpg",
             userState = "NCR",
             userCity = "Noida";
 }
