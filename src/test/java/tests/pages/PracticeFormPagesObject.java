@@ -29,8 +29,18 @@ public class PracticeFormPagesObject {
             submit = $("#submit");
 
     //Actions
+
+    public PracticeFormPagesObject removeAds () {
+        executeJavaScript("""
+                document.getElementById('fixedban')?.remove();
+                document.querySelector('footer')?.remove();
+        """);
+
+        return this;
+    }
     public PracticeFormPagesObject openPage () {
         open("");
+        removeAds();
         $$(".card-body").findBy(text("Forms")).click();
         $$(".router-link").findBy(text("Practice Form")).click();
 
