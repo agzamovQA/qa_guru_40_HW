@@ -15,6 +15,10 @@ public class PracticeFormTests extends TestBase {
     @DisplayName("[Positive] Fill all fields and check table result")
     void successfulFillRegistrationFormTest() {
         open("");
+        executeJavaScript("""
+                document.getElementById('fixedban')?.remove();
+                document.querySelector('footer')?.remove();
+        """);
         $$(".card-body").findBy(text("Forms")).click();
         $$(".router-link").findBy(text("Practice Form")).click();
 
@@ -38,7 +42,7 @@ public class PracticeFormTests extends TestBase {
 
         $("#hobbiesWrapper").$(byText(TestData.userHobbies)).click();
         $("#currentAddress").setValue(TestData.userHomeAdress);
-        $("#uploadPicture").uploadFromClasspath("Jhonny_Silverhand.jpg");
+        $("#uploadPicture").uploadFromClasspath(TestData.userPhoto);
 
         $("#state").click();
         $("#state").$(byText(TestData.userState)).click();
