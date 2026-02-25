@@ -3,8 +3,6 @@ package tests.homework.demoqa;
 import org.junit.jupiter.api.BeforeAll;
 import com.codeborne.selenide.Configuration;
 
-import static com.codeborne.selenide.Selenide.executeJavaScript;
-
 public class TestBase {
     @BeforeAll
     static void setupSelenideConfig() {
