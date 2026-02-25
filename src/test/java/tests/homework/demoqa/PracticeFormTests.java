@@ -15,6 +15,10 @@ public class PracticeFormTests extends TestBase {
     @DisplayName("[Positive] Fill all fields and check table result")
     void successfulFillRegistrationFormTest() {
         open("");
+        executeJavaScript("""
+                document.getElementById('fixedban')?.remove();
+                document.querySelector('footer')?.remove();
+        """);
         $$(".card-body").findBy(text("Forms")).click();
         $$(".router-link").findBy(text("Practice Form")).click();
 
