@@ -8,37 +8,38 @@ import tests.testdata.TestDataFaker;
 
 public class PracticeFormTestsJavaFaker extends TestBase {
     PracticeFormPagesObject practiceFormPages = new PracticeFormPagesObject();
+    TestDataFaker testDataFaker = new TestDataFaker();
 
     @Test
     @DisplayName("[Positive] Fill all fields and check table result")
     void fillPositiveAllFormTest()
     {
         practiceFormPages.openPage()
-                .setFirstName(TestDataFaker.firstName)
-                .setLastName(TestDataFaker.lastName)
-                .setUserEmail(TestDataFaker.userEmail)
-                .setUserGender(TestDataFaker.userGender)
-                .setUserNumber(TestDataFaker.userNumber)
-                .setBirthDate(TestDataFaker.dateOfBirth,TestDataFaker.monthOfBirth, TestDataFaker.yearOfBirth)
-                .setSubject(TestDataFaker.userSubjectChoice)
-                .setUserHobbies(TestDataFaker.userHobbies)
-                .setUserAdress(TestDataFaker.userHomeAdress)
-                .uploadUserPhoto(TestDataFaker.userPhoto)
-                .selectState(TestDataFaker.userState)
-                .selectCity(TestDataFaker.userCity)
+                .setFirstName(testDataFaker.firstName)
+                .setLastName(testDataFaker.lastName)
+                .setUserEmail(testDataFaker.userEmail)
+                .setUserGender(testDataFaker.userGender)
+                .setUserNumber(testDataFaker.userNumber)
+                .setBirthDate(testDataFaker.dateOfBirth,testDataFaker.monthOfBirth, testDataFaker.yearOfBirth)
+                .setSubject(testDataFaker.userSubjectChoice)
+                .setUserHobbies(testDataFaker.userHobbies)
+                .setUserAdress(testDataFaker.userHomeAdress)
+                .uploadUserPhoto(testDataFaker.userPhoto)
+                .selectState(testDataFaker.userState)
+                .selectCity(testDataFaker.userCity)
                 .submitForm();
 
         practiceFormPages.verifyOpenedTable()
-                .verifyContentInTable("Student Name", TestDataFaker.firstName + " " + TestDataFaker.lastName)
-                .verifyContentInTable("Student Email", TestDataFaker.userEmail)
-                .verifyContentInTable("Gender", TestDataFaker.userGender)
-                .verifyContentInTable("Mobile", TestDataFaker.userNumber)
-                .verifyContentInTable("Date of Birth", TestDataFaker.dateOfBirth + " " + TestDataFaker.monthOfBirth + "," + TestDataFaker.yearOfBirth)
-                .verifyContentInTable("Subjects", TestDataFaker.userSubjectChoice)
-                .verifyContentInTable("Hobbies", TestDataFaker.userHobbies)
-                .verifyContentInTable("Picture", TestDataFaker.userPhoto)
-                .verifyContentInTable("Address", TestDataFaker.userHomeAdress)
-                .verifyContentInTable("State and City", TestDataFaker.userState + " " + TestDataFaker.userCity);
+                .verifyContentInTable("Student Name", testDataFaker.firstName + " " + testDataFaker.lastName)
+                .verifyContentInTable("Student Email", testDataFaker.userEmail)
+                .verifyContentInTable("Gender", testDataFaker.userGender)
+                .verifyContentInTable("Mobile", testDataFaker.userNumber)
+                .verifyContentInTable("Date of Birth", testDataFaker.dateOfBirth + " " + testDataFaker.monthOfBirth + "," + testDataFaker.yearOfBirth)
+                .verifyContentInTable("Subjects", testDataFaker.userSubjectChoice)
+                .verifyContentInTable("Hobbies", testDataFaker.userHobbies)
+                .verifyContentInTable("Picture", testDataFaker.userPhoto)
+                .verifyContentInTable("Address", testDataFaker.userHomeAdress)
+                .verifyContentInTable("State and City", testDataFaker.userState + " " + testDataFaker.userCity);
     }
 
     @Test
@@ -46,16 +47,16 @@ public class PracticeFormTestsJavaFaker extends TestBase {
     void fillRequiredFormTest()
     {
         practiceFormPages.openPage()
-                .setFirstName(TestDataFaker.firstName)
-                .setLastName(TestDataFaker.lastName)
-                .setUserGender(TestDataFaker.userGender)
-                .setUserNumber(TestDataFaker.userNumber)
+                .setFirstName(testDataFaker.firstName)
+                .setLastName(testDataFaker.lastName)
+                .setUserGender(testDataFaker.userGender)
+                .setUserNumber(testDataFaker.userNumber)
                 .submitForm();
 
         practiceFormPages.verifyOpenedTable()
-                .verifyContentInTable("Student Name", TestDataFaker.firstName + " " + TestDataFaker.lastName)
-                .verifyContentInTable("Gender", TestDataFaker.userGender)
-                .verifyContentInTable("Mobile", TestDataFaker.userNumber);
+                .verifyContentInTable("Student Name", testDataFaker.firstName + " " + testDataFaker.lastName)
+                .verifyContentInTable("Gender", testDataFaker.userGender)
+                .verifyContentInTable("Mobile", testDataFaker.userNumber);
     }
 
     @Test
@@ -63,9 +64,9 @@ public class PracticeFormTestsJavaFaker extends TestBase {
     void fillNegativeRequiredFormTest()
     {
             practiceFormPages.openPage()
-                    .setFirstName(TestDataFaker.firstName)
-                    .setLastName(TestDataFaker.lastName)
-                    .setUserGender(TestDataFaker.userGender)
+                    .setFirstName(testDataFaker.firstName)
+                    .setLastName(testDataFaker.lastName)
+                    .setUserGender(testDataFaker.userGender)
                     .setUserNumber("")
                     .submitForm();
 
