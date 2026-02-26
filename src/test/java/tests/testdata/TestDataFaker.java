@@ -21,14 +21,15 @@ public class TestDataFaker {
             userHomeAdress = faker.address().streetAddress(),
             userPhoto = faker.options().option("Jhonny_Silverhand.jpg", "Uaaa.png"),
             userState = faker.options().option("NCR", "Haryana", "Rajasthan"),
-            userCity = getRandomStateAndCity();
+            userCity = selectCity(userState);
 
-    public static String getRandomStateAndCity() {
-        if (userState.equals("NCR")) userCity = faker.options().option("Gurgaon", "Noida");
-        if (userState.equals("Haryana")) userCity = faker.options().option("Karnal", "Panipat");
-        if (userState.equals("Rajasthan")) userCity = faker.options().option("Jaipur", "Jaiselmer");
-
-        return userCity;
+        public static String selectCity(String state) {
+            return switch (state) {
+                case "NCR" -> faker.options().option("Delhi", "Gurgaon", "Noida");
+                case "Uttar Pradesh" -> faker.options().option("Agra", "Lucknow", "Merrut");
+                case "Haryana" -> faker.options().option("Karnal", "Panipat");
+                case "Rajasthan" -> faker.options().option("Jaipur", "Jaiselmer");
+                default -> null;
+            };
     }
 }
-
