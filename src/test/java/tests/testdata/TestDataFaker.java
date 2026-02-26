@@ -1,12 +1,11 @@
 package tests.testdata;
 
 import com.github.javafaker.Faker;
-
 import java.util.Locale;
 
 public class TestDataFaker {
-    static Faker faker = new Faker(new Locale("en"));
-    public static String firstName = faker.name().firstName(),
+    Faker faker = new Faker(new Locale("en"));
+    public String firstName = faker.name().firstName(),
             lastName = faker.name().firstName(),
             userEmail = faker.internet().emailAddress(),
             userGender = faker.options().option("Male", "Female"),
@@ -23,7 +22,7 @@ public class TestDataFaker {
             userState = faker.options().option("NCR", "Haryana", "Rajasthan"),
             userCity = selectCity(userState);
 
-        public static String selectCity(String state) {
+        public String selectCity(String state) {
             return switch (state) {
                 case "NCR" -> faker.options().option("Delhi", "Gurgaon", "Noida");
                 case "Uttar Pradesh" -> faker.options().option("Agra", "Lucknow", "Merrut");
