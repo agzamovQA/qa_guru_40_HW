@@ -1,5 +1,7 @@
 package tests.homework.lesson_8;
 
+import com.codeborne.pdftest.PDF;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -41,4 +43,34 @@ public class ZipFileParsingTest {
                     "Файл " + expectedFile + " должен присутствовать в архиве");
         }
     }
+
+    @Test
+    void pdfFileFromZipTest() throws Exception {
+        try (ZipInputStream zis = new ZipInputStream(
+                cl.getResourceAsStream("CreditCard.zip"))) {
+            ZipEntry entry;
+            boolean pdfFound = false;
+
+            while ((entry = zis.getNextEntry()) != null) {
+                System.out.println("Найден файл: " + entry.getName());
+
+                if (entry.getName().endsWith("consent_personal_data_partner_debit_card_04_24.pdf")) {
+                    pdfFound = true;
+
+                    PDF pdf = new PDF(zis);
+
+                    System.out.println("Содержимое PDF:");
+                    System.out.println(pdf.text);
+
+                    Assertions.assertTrue(pdf.text.contains("Согласие на обработку персональных данных"));
+
+                    break;
+                }
+            }
+
+            Assertions.assertTrue(pdfFound, "В архиве не найден PDF файл");
+        }
+
+    }
+
 }
