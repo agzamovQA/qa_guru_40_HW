@@ -1,0 +1,9 @@
+{
+  "firstName": "Елена",
+  "id": 12345,
+  "cards": {
+    "number": "4532123456789012",
+    "type": "Visa Classic",
+    "issuer": "GPB Bank"
+  }
+}
