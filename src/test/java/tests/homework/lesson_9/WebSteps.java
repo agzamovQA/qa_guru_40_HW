@@ -17,7 +17,7 @@ public class WebSteps {
 
     @Step ("Открываем главную страницу")
     public void openMainPage() {
-        open("https://github.com");
+        open("");
     }
 
     @Step ("Ищем репозиторий {repo}")
