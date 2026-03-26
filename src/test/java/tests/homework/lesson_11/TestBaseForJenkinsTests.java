@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 
 public class TestBaseForJenkinsTests {
+
     @BeforeAll
     static void setupSelenideConfig() {
         Configuration.browserSize = "2560x1440";

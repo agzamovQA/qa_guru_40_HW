@@ -15,35 +15,39 @@ import static org.openqa.selenium.By.linkText;
 public class WebSteps {
 
     @Step ("Открываем главную страницу")
-    public void openMainPage() {
+    public WebSteps openMainPage() {
         open("");
+        return this;
     }
 
     @Step ("Ищем репозиторий {repo}")
-    public void searchForRepository(String repo) {
+    public WebSteps searchForRepository(String repo) {
         $(".input-button").click();
         $("#query-builder-test").sendKeys(repo);
         $("#query-builder-test").submit();
+        return this;
     }
 
     @Step ("Кликаем по ссылке репозитория {repo}")
-    public void clickOnRepositoryLink(String repo) {
+    public WebSteps clickOnRepositoryLink(String repo) {
         $(linkText(repo)).click();
+        return this;
     }
 
     @Step ("Открываем таб Issues")
-    public void openIssueTab() {
+    public WebSteps openIssueTab() {
         $("[data-content='Issues']").click();
+        return this;
     }
 
     @Step ("Проверяем наличие Issue с номером {issue}")
-    public void shouldSeeIssueWithNumber(int issue) {
+    public WebSteps shouldSeeIssueWithNumber(int issue) {
         $(withText("#" + issue)).should(Condition.exist);
+        return this;
     }
 
     @Attachment(value = "Screenshot", type = "image/png", fileExtension = "png")
     public byte[] takeScreenshot() {
         return ((TakesScreenshot) WebDriverRunner.getWebDriver()).getScreenshotAs(OutputType.BYTES);
     }
-
 }
