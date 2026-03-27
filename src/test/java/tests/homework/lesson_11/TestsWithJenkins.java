@@ -10,8 +10,8 @@ public class TestsWithJenkins extends TestBaseForJenkinsTests {
     private static final int ISSUE = 1;
 
     @Test
-    @DisplayName("Шаги с аннотацией @Step c запуском в Jenkins")
-    public void testAnnotatedStep() {
+    @DisplayName("Успешный поиск Issue в репозитории")
+    public void testAnnotatedStepWithAllure() {
         WebSteps steps = new WebSteps();
 
         steps.openMainPage()
