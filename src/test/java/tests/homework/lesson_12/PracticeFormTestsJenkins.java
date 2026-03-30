@@ -2,7 +2,6 @@ package tests.homework.lesson_12;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import tests.homework.demoqa.TestBase;
 import tests.pages.PracticeFormPagesObject;
 import tests.testdata.TestDataFaker;
 
