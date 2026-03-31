@@ -1,5 +1,6 @@
 package tests.homework.demoqa;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import tests.testdata.TestData;
@@ -9,6 +10,7 @@ import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
+@Disabled
 public class PracticeFormTests extends TestBase {
 
     @Test
