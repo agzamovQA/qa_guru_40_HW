@@ -51,3 +51,9 @@ test {
         }
     }
 }
+
+tasks.register('HW_11', Test) {
+    useJUnitPlatform {
+        includeTags 'HW_11'
+    }
+}
