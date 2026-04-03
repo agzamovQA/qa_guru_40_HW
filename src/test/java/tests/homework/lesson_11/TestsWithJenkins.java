@@ -18,8 +18,6 @@ public class TestsWithJenkins extends TestBaseForJenkinsTests {
                 .searchForRepository(REPOSITORY)
                 .clickOnRepositoryLink(REPOSITORY)
                 .openIssueTab()
-                .shouldSeeIssueWithNumber(ISSUE)
-                .takeScreenshot();
-
+                .shouldSeeIssueWithNumber(ISSUE);
     }
 }
