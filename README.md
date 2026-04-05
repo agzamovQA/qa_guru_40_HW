@@ -109,16 +109,10 @@ public class PracticeFormTestsJenkins extends TestBaseDemoQaJenkins {
 
 ```bash
 ./gradlew clean test
-
-## Запуск тестов
-
-Для запуска всех тестов выполните в терминале:
-
-```bash
-./gradlew clean test
 ```
 
 Запуск конкретного домашнего задания (по тегу)
+
 В проекте настроен Gradle для запуска тестов, отмеченных определенным тегом (например, @HW_11).
 
 Пример команды:
